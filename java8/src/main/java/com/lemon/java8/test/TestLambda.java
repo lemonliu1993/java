@@ -99,7 +99,13 @@ public class TestLambda {
         for (Employee employee : employees) {
             System.out.println(employee);
         }
+    }
 
+    //优化方式三：Lambda表达式
+    @Test
+    public void test6() {
+        List<Employee> employees = filterEmployee(this.employees, (e) -> e.getSalary() <= 5000);
+        employees.forEach(System.out::println);
     }
 
 }
