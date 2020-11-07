@@ -69,7 +69,7 @@ public class TestLambda {
 
     // 优化方式一：策略设计模式
     @Test
-    public void test4(){
+    public void test4() {
         List<Employee> employees = filterEmployee(this.employees, new FilterEmployeeByAge());
         for (Employee employee : employees) {
             System.out.println(employee);
@@ -85,6 +85,20 @@ public class TestLambda {
             }
         }
         return emps;
+
+    }
+
+    //优化方式二：匿名内部类
+    public void test5() {
+        List<Employee> employees = filterEmployee(this.employees, new MyPredicate<Employee>() {
+            @Override
+            public boolean test(Employee employee) {
+                return employee.getSalary() <= 5000;
+            }
+        });
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
 
     }
 
