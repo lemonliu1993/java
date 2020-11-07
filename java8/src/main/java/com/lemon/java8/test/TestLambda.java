@@ -67,4 +67,25 @@ public class TestLambda {
         return emps;
     }
 
+    // 优化方式一：策略设计模式
+    @Test
+    public void test4(){
+        List<Employee> employees = filterEmployee(this.employees, new FilterEmployeeByAge());
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+    }
+
+
+    public List<Employee> filterEmployee(List<Employee> list, MyPredicate<Employee> mp) {
+        List<Employee> emps = new ArrayList<>();
+        for (Employee employee : list) {
+            if (mp.test(employee)) {
+                emps.add(employee);
+            }
+        }
+        return emps;
+
+    }
+
 }
