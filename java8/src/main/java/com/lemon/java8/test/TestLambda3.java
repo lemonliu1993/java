@@ -27,17 +27,17 @@ import java.util.function.Supplier;
 public class TestLambda3 {
 
     //Predicate<T> 断言型接口：
-    public void test4(){
-        List<String> list= Arrays.asList("hello","lemon","aa","ok");
+    public void test4() {
+        List<String> list = Arrays.asList("hello", "lemon", "aa", "ok");
         List<String> stringList = filterStr(list, (x) -> x.length() >= 3);
         System.out.println(stringList);
     }
 
     //需求：将满足条件的字符串，放入集合中
-    public List<String> filterStr(List<String> list, Predicate<String> predicate){
+    public List<String> filterStr(List<String> list, Predicate<String> predicate) {
         List<String> stringList = new ArrayList<>();
-        for(String str:list){
-            if(predicate.test(str)){
+        for (String str : list) {
+            if (predicate.test(str)) {
                 stringList.add(str);
             }
         }
