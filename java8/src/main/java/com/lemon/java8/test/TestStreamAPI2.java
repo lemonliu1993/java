@@ -1,5 +1,6 @@
 package com.lemon.java8.test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -28,6 +29,50 @@ public class TestStreamAPI2 {
     );
 
     //中间操作
+
+
+    /**
+     * 映射
+     * map——接收Lambda，将元素转换成其他形式或提取信息，接收一个函数作为参数，该函数会被应用到每个元素上，并将其映射成一个新元素
+     * flatMap——接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有流连接成一个流
+     */
+    public void test5(){
+        List<String> list = Arrays.asList("aaa","bbb","ccc","ddd","eeee");
+        list.stream()
+                .map((str)->str.toUpperCase())
+                .forEach(System.out::println);
+
+
+        System.out.println("----------------------");
+
+        employees.stream()
+                .map(Employee::getName)
+                .forEach(System.out::println);
+
+        System.out.println("----------------------");
+
+        Stream<Stream<Character>> stream = list.stream()
+                .map(TestStreamAPI2::filterCharater);
+
+//        stream.forEach((sm)->{
+//            sm.forEach(System.out::println);
+//        });
+
+        System.out.println("----------------------");
+
+        list.stream()
+                .flatMap(TestStreamAPI2::filterCharater)
+                .forEach(System.out::println);
+
+    }
+
+    public static Stream<Character> filterCharater(String str){
+        List<Character> list = new ArrayList<>();
+        for(Character character:str.toCharArray()){
+            list.add(character);
+        }
+        return list.stream();
+    }
 
     /**
      * 筛选与切片
@@ -84,6 +129,7 @@ public class TestStreamAPI2 {
 
     public static void main(String[] args) {
 //        new TestStreamAPI2().test1();
-        new TestStreamAPI2().test4();
+//        new TestStreamAPI2().test4();
+        new TestStreamAPI2().test5();
     }
 }
