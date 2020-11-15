@@ -30,16 +30,41 @@ public class TestStreamAPI2 {
 
     //中间操作
 
+    /**
+     * 排序
+     * sorted()——自然排序(Comparable
+     * sorted(Comparator com)——定制排序
+     */
+    public void test6() {
+        List<String> list = Arrays.asList("ccc", "aaa", "bbb", "dddd");
+
+        list.stream()
+                .sorted()
+                .forEach(System.out::println);
+
+        System.out.println("----------------------");
+
+        employees.stream()
+                .sorted((e1, e2) -> {
+                    if (e1.getAge() == e2.getAge()) {
+                        return e1.getName().compareTo(e2.getName());
+                    } else {
+                        return e1.getAge().compareTo(e2.getAge());
+                    }
+                })
+                .forEach(System.out::println);
+    }
+
 
     /**
      * 映射
      * map——接收Lambda，将元素转换成其他形式或提取信息，接收一个函数作为参数，该函数会被应用到每个元素上，并将其映射成一个新元素
      * flatMap——接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有流连接成一个流
      */
-    public void test5(){
-        List<String> list = Arrays.asList("aaa","bbb","ccc","ddd","eeee");
+    public void test5() {
+        List<String> list = Arrays.asList("aaa", "bbb", "ccc", "ddd", "eeee");
         list.stream()
-                .map((str)->str.toUpperCase())
+                .map((str) -> str.toUpperCase())
                 .forEach(System.out::println);
 
 
@@ -66,9 +91,9 @@ public class TestStreamAPI2 {
 
     }
 
-    public static Stream<Character> filterCharater(String str){
+    public static Stream<Character> filterCharater(String str) {
         List<Character> list = new ArrayList<>();
-        for(Character character:str.toCharArray()){
+        for (Character character : str.toCharArray()) {
             list.add(character);
         }
         return list.stream();
@@ -130,6 +155,6 @@ public class TestStreamAPI2 {
     public static void main(String[] args) {
 //        new TestStreamAPI2().test1();
 //        new TestStreamAPI2().test4();
-        new TestStreamAPI2().test5();
+        new TestStreamAPI2().test6();
     }
 }

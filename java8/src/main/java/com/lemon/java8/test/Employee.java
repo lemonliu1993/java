@@ -6,7 +6,7 @@ package com.lemon.java8.test;
 public class Employee {
 
     private String name;
-    private int age;
+    private Integer age;
     private double salary;
 
     public String getName() {
@@ -17,11 +17,11 @@ public class Employee {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
