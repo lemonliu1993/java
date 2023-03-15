@@ -75,5 +75,48 @@ public class TestLambda {
         return emps;
     }
 
+    //优化方式二：匿名内部类
+    @Test
+    public void test5() {
+        List<Employee> list = filterEmployee(employees, new MyPredicate<Employee>() {
+            @Override
+            public boolean test(Employee t) {
+                return t.getAge() >= 35;
+            }
+        });
+
+        for (Employee employee : list) {
+            System.out.println(employee);
+        }
+    }
+
+    //优化方式三： Lambda表达式
+    @Test
+    public void test6() {
+        List<Employee> list = filterEmployee(employees, (e) -> e.getAge() <= 35);
+        list.forEach(System.out::println);
+
+        System.out.println("-----------------------------------------");
+
+        List<Employee> list2 = filterEmployee(employees, (e) -> e.getSalary() >= 10000);
+        list2.forEach(System.out::println);
+    }
+
+    //优化方式四：Stream API
+    @Test
+    public void test7() {
+        employees.stream()
+                .filter((e) -> e.getAge() <= 35)
+                .forEach(System.out::println);
+
+        System.out.println("-----------------------------------------");
+
+        employees.stream()
+                .map(Employee::getName)
+                .limit(3)
+                .sorted()
+                .forEach(System.out::println);
+    }
+
 
 }
