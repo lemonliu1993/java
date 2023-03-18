@@ -1,6 +1,7 @@
-package com.lemon.java8;
+package com.lemon.java8.lambda;
 
 import com.lemon.java8.entity.Employee;
+import com.lemon.java8.lambda.MyPredicate;
 
 /**
  * Created by lemoon on 2023/3/14 23:36

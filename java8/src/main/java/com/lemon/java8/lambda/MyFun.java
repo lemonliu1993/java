@@ -1,4 +1,4 @@
-package com.lemon.java8;
+package com.lemon.java8.lambda;
 
 /**
  * Created by lemoon on 2023/3/16 23:29
