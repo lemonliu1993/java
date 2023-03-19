@@ -4,6 +4,8 @@ package com.lemon.java8.entity;
  * Created by lemoon on 2023/3/12 23:05
  */
 public class Employee {
+
+    private int id;
     private String name;
     private Long age;
     private Double salary;
@@ -32,7 +34,26 @@ public class Employee {
         this.salary = salary;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Employee() {
+
+    }
+
     public Employee(String name, Long age, Double salary) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+    }
+
+    public Employee(int id, String name, Long age, Double salary) {
+        this.id = id;
         this.name = name;
         this.age = age;
         this.salary = salary;
@@ -45,5 +66,18 @@ public class Employee {
                 ", age=" + age +
                 ", salary=" + salary +
                 '}';
+    }
+
+    public String show() {
+        return "测试方法引用！";
+    }
+
+    public Employee(String name) {
+        this.name = name;
+    }
+
+    public Employee(String name, Long age) {
+        this.name = name;
+        this.age = age;
     }
 }
