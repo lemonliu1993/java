@@ -125,7 +125,7 @@ public class TestMethodRef {
     public void test7() {
         Function<String, Employee> fun = Employee::new;
 
-        BiFunction<String, Integer, Employee> fun2 = Employee::new;
+        BiFunction<String, Long, Employee> fun2 = Employee::new;
     }
 
     //数组引用
